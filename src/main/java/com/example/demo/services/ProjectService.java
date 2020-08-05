@@ -7,6 +7,8 @@ import com.example.demo.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
+
 //@Service is used to mark the class as a service provider
 @Service
 public class ProjectService {
@@ -34,5 +36,10 @@ public class ProjectService {
             throw new ProjectIdException("Project " + projectId + " does not exist");
         }
         return project;
+    }
+
+    //The Java Iterable interface represents a collection of objects which is iterable - meaning which can be iterated.
+    public Iterable<Project> findAllProjects(){
+        return projectRepository.findAll();
     }
 }

@@ -13,4 +13,7 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {
     //for example, in Project of domain, since there is a field called projectIdentifier, we can declare the method called
     //findBy{field name in domain class}
     Project findByProjectIdentifier(String projectId);
+
+    @Override
+    Iterable<Project> findAll();
 }
