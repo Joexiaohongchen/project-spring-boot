@@ -42,4 +42,17 @@ public class ProjectService {
     public Iterable<Project> findAllProjects(){
         return projectRepository.findAll();
     }
+
+    public void deleteProjectByIdentifier(String projectId) {
+        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+
+        if (project == null) {
+            throw new ProjectIdException("Project " + projectId + " does not exist");
+        }
+        //delete method import from CrudRepository interface class. since ProjectRepository extends it so we can directly
+        // implement it.
+
+        projectRepository.delete(project);
+
+    }
 }
