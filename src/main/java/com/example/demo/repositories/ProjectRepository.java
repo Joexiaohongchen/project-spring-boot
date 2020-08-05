@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProjectRepository extends CrudRepository<Project, Long> {
 
-    @Override
-    Iterable<Project> findAllById(Iterable<Long> iterable);
+    //in spring, it allows user to specific the method once field is created in the domain to access the field.
+    //for example, in Project of domain, since there is a field called projectIdentifier, we can declare the method called
+    //findBy{field name in domain class}
+    Project findByProjectIdentifier(String projectId);
 }
