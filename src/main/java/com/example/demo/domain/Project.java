@@ -20,6 +20,8 @@ public class Project {
     private String projectName;
     @NotBlank(message = "Project projectIdentifier is required")
     @Size(min = 4, max = 5, message = "Please use 4 to 5 characters")
+    //@Column is a database level validation, it means we can't check duplication on the request body but it invoked error
+    //when database has duplication.
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
     @NotBlank(message = "Project description is required")
