@@ -102,6 +102,7 @@ public class Project {
     }
 
     //@Prepersist it is used to annotate model methods to indicate that the method should be called before the entity is inserted (persisted) into the database.
+    @PrePersist
     protected void onCreated() {
         this.created_At = new Date();
     }
