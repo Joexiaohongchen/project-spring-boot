@@ -6,6 +6,7 @@ import com.example.demo.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class ProjectController {
     //@PostMapping return a response entity of type of project
     @PostMapping("")
     //ResponseEntity is a type that allows us to have more control on our Json responses and response status.
-    public ResponseEntity<Project> createNewProject(@RequestBody Project project){
+    public ResponseEntity<Project> createNewProject(@Validated @RequestBody Project project){
         Project project1 = projectService.saveOrUpdateProject(project);
         return new ResponseEntity<Project>(project, HttpStatus.CREATED);
     }
